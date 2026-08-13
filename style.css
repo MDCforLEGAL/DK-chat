@@ -92,6 +92,21 @@ body {
   margin-bottom: 20px;
 }
 
+.custom-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #5865f2, #eb459e);
+  color: white;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  box-shadow: 0 4px 16px rgba(88, 101, 242, 0.4);
+}
+
 .auth-card h1 {
   text-align: center;
   font-size: 24px;
@@ -279,6 +294,7 @@ body {
 .server-icon.home {
   background: var(--bg-primary);
   color: var(--text-normal);
+  font-size: 22px;
 }
 
 .server-icon.home:hover,
