@@ -1,0 +1,11 @@
+name = "discord-klon-api"
+main = "index.js"
+compatibility_date = "2024-09-23"
+
+# KV Namespace - create with: npx wrangler kv namespace create DISCORD_KV
+# then put the id below
+[[kv_namespaces]]
+binding = "KV"
+id = "YOUR_KV_NAMESPACE_ID_HERE"
+
+# After creating, replace YOUR_KV_NAMESPACE_ID_HERE with the real id
