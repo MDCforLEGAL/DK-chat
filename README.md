@@ -8,58 +8,42 @@ Türkiye'de Discord kapalı olduğu için yerel alternatif olarak kullanılabili
 ## Özellikler
 
 ### Hesap Sistemi
-- Kayıt ol / Giriş yap
+- Kayıt ol / Giriş yap (ilk açılışta login ekranı)
 - Kullanıcı adı + şifre (localStorage'da saklanır)
-- Oturum açık kalır (sayfa yenilense bile)
+- Oturum açık kalır
 - Çıkış yap
 - Her hesap kendi mesajlarını ve sunucularını tutar
 
 ### Arayüz
-- Discord tarzı koyu tema + Daha koyu tema seçeneği
+- Discord tarzı koyu tema + Daha koyu tema
 - Sunucu listesi (pill animasyonlu)
 - Metin + ses kanalları
-- Çalışan sohbet (Enter ile gönder)
-- Mesajlar animasyonlu gelir
-- Üye listesi (çevrimiçi / çevrimdışı)
+- Çalışan sohbet
+- Mesajlar animasyonlu
+- Üye listesi
 - Kompakt mesaj modu
 
 ### Ayarlar
-- Hesabım (e-posta)
-- Kullanıcı profili (görünen ad, avatar harfi, durum)
-- Görünüm (tema + kompakt mod)
-- Dil seçeneği: **Türkçe** / **English**
-- Çıkış yap
-
-### Diğer
-- Yeni sunucu oluşturma
-- Temel responsive destek
-- Smooth animasyonlar (mesaj, modal, server icon, hover)
+- Hesabım, profil, görünüm, dil (TR/EN), çıkış
 
 ## Nasıl Çalıştırılır?
 
 1. Repoyu klonla veya dosyaları indir
 2. `index.html` dosyasını tarayıcıda aç
-3. Kayıt ol → Giriş yap → Sohbete başla
+3. Önce kayıt ol / giriş yap → sonra sohbet
 
 ```bash
 git clone https://github.com/MDCforLEGAL/discord-siyah-klon.git
-cd discord-siyah-klon
 ```
 
-## GitHub Pages
+## Backend Önerisi (7/24 ücretsiz)
 
-**Settings → Pages → Source: Deploy from a branch → main** seçerek canlı siteye alabilirsin.
+Şu an localStorage kullanıyor. Gerçek çoklu kullanıcı için:
+- **Cloudflare Workers + D1 + Durable Objects** (en iyi ücretsiz, sınırsıza yakın, 7/24)
+- Firebase (Auth + Firestore) free tier
+- Appwrite Cloud
 
-## Not
-
-Bu bir **frontend klon**. Gerçek Discord gibi:
-- Gerçek zamanlı çoklu kullanıcı (WebSocket / sunucu)
-- Sesli / görüntülü arama
-- Gerçek e-posta doğrulama
-- Sunucu rolleri & yetkiler
-
-yoktur. Eğitim ve yerel kullanım amaçlıdır. Şifreler basit hash ile saklanır, production için uygun değildir.
+Supabase önerilmez (süreli / bozulabiliyor).
 
 ---
-
 Yapımcı: Grok (xAI) — 2026
