@@ -567,13 +567,20 @@ function switchAuthTab(mode) {
   document.querySelectorAll(".auth-tab").forEach(tab => {
     tab.classList.toggle("active", tab.dataset.tab === mode);
   });
-  document.getElementById("email-group").style.display = mode === "register" ? "block" : "none";
-  document.getElementById("auth-error").textContent = "";
+  const emailGroup = document.getElementById("email-group");
+  if (emailGroup) {
+    emailGroup.style.display = mode === "register" ? "block" : "none";
+  }
+  const errorEl = document.getElementById("auth-error");
+  if (errorEl) errorEl.textContent = "";
   applyLanguage();
-  document.getElementById("auth-switch-link").onclick = (e) => {
-    e.preventDefault();
-    switchAuthTab(mode === "login" ? "register" : "login");
-  };
+  const link = document.getElementById("auth-switch-link");
+  if (link) {
+    link.onclick = (e) => {
+      e.preventDefault();
+      switchAuthTab(mode === "login" ? "register" : "login");
+    };
+  }
 }
 
 function handleAuth(e) {
@@ -605,7 +612,7 @@ function enterApp(username) {
   if (!user) return;
 
   state.currentUser = user;
-  state.servers = JSON.parse(localStorage.getItem("dc_servers_" + username.toLowerCase())) || structuredClone(defaultServers);
+  state.servers = JSON.parse(localStorage.getItem("dc_servers_" + username.toLowerCase())) || JSON.parse(JSON.stringify(defaultServers));
   state.messages = JSON.parse(localStorage.getItem("dc_messages_" + username.toLowerCase())) || getSampleMessages(state.lang);
 
   document.getElementById("auth-screen").style.display = "none";
