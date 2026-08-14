@@ -1,0 +1,103 @@
+/* Avatar Frame selector fix */
+.frame-options {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 8px !important;
+  flex-direction: row !important;
+}
+
+.frame-option {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 50% !important;
+  background: #5865f2 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  font-weight: 700 !important;
+  color: white !important;
+  border: 3px solid transparent !important;
+  font-size: 16px !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.frame-option.active {
+  border-color: #fff !important;
+}
+
+.frame-option.frame-glow {
+  box-shadow: 0 0 0 3px #f47fff, 0 0 12px #f47fff !important;
+  animation: frameGlow 2s ease-in-out infinite !important;
+}
+
+.frame-option.frame-rainbow {
+  animation: frameRainbow 3s linear infinite !important;
+}
+
+.frame-option.frame-pulse {
+  box-shadow: 0 0 0 3px #5865f2 !important;
+  animation: framePulse 1.5s ease-in-out infinite !important;
+}
+
+.frame-option.frame-gold {
+  box-shadow: 0 0 0 3px #f0b232, 0 0 10px rgba(240,178,50,0.5) !important;
+}
+
+.frame-option.frame-fire {
+  box-shadow: 0 0 0 3px #ff6b35 !important;
+  animation: frameFire 1.2s ease-in-out infinite !important;
+}
+
+@keyframes frameGlow {
+  0%, 100% { box-shadow: 0 0 0 3px #f47fff, 0 0 8px #f47fff; }
+  50% { box-shadow: 0 0 0 4px #f47fff, 0 0 18px #f47fff; }
+}
+
+@keyframes frameRainbow {
+  0% { box-shadow: 0 0 0 3px #ff6b6b; }
+  20% { box-shadow: 0 0 0 3px #feca57; }
+  40% { box-shadow: 0 0 0 3px #48dbfb; }
+  60% { box-shadow: 0 0 0 3px #ff9ff3; }
+  80% { box-shadow: 0 0 0 3px #54a0ff; }
+  100% { box-shadow: 0 0 0 3px #ff6b6b; }
+}
+
+@keyframes framePulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 3px #5865f2; }
+  50% { transform: scale(1.1); box-shadow: 0 0 0 5px #5865f2; }
+}
+
+@keyframes frameFire {
+  0%, 100% { box-shadow: 0 0 0 3px #ff6b35, 0 0 8px #ff6b35; }
+  50% { box-shadow: 0 0 0 4px #ff4500, 0 0 16px #ff4500; }
+}
+
+/* Settings panel mobile nav fix */
+@media (max-width: 900px) {
+  .settings-nav {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+  }
+  .nav-item {
+    font-size: 12px !important;
+    padding: 6px 10px !important;
+    white-space: nowrap !important;
+  }
+  .settings-content {
+    padding: 16px !important;
+  }
+  .settings-section h2 {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+  }
+}
