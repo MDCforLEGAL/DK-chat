@@ -1,0 +1,85 @@
+/* Room modal & badge */
+.room-modal-panel {
+  background: var(--bg-primary, #313338);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  padding: 24px 20px;
+  position: relative;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.room-modal-panel h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+.room-modal-panel .room-desc {
+  color: var(--text-muted, #949ba4);
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.room-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.room-actions .auth-btn {
+  width: 100%;
+}
+.room-divider {
+  text-align: center;
+  color: var(--text-muted, #949ba4);
+  font-size: 12px;
+  margin: 4px 0;
+}
+#join-code-input {
+  width: 100%;
+  background: var(--input-bg, #1e1f22);
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: monospace;
+  outline: none;
+  margin-bottom: 8px;
+}
+#join-code-input:focus {
+  box-shadow: 0 0 0 2px #5865f2;
+}
+#room-error {
+  color: #f23f43;
+  font-size: 13px;
+  min-height: 18px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+#room-code-badge {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-secondary, #2b2d31);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin-left: 8px;
+}
+#room-code-badge .code-text {
+  font-family: monospace;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #57f287;
+}
+#room-code-badge button {
+  background: none;
+  border: none;
+  color: var(--interactive, #b5bac1);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px;
+}
