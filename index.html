@@ -5,24 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>DK Chat</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="mobile-fix.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
-  <!-- LOGIN / REGISTER -->
   <div id="auth-screen" class="auth-screen">
     <div class="auth-bg"></div>
     <div class="auth-card">
-      <div class="auth-logo">
-        <div class="custom-logo">DK</div>
-      </div>
+      <div class="auth-logo"><div class="custom-logo">DK</div></div>
       <h1 id="auth-title">Tekrar hoş geldin!</h1>
       <p id="auth-subtitle" class="auth-sub">Seni özledik!</p>
-
       <div class="auth-tabs">
         <button type="button" class="auth-tab active" data-tab="login" id="tab-login">Giriş Yap</button>
         <button type="button" class="auth-tab" data-tab="register" id="tab-register">Kayıt Ol</button>
       </div>
-
       <form id="auth-form" onsubmit="return handleAuth(event)">
         <div class="form-group" id="username-group">
           <label id="label-username">KULLANICI ADI</label>
@@ -39,7 +35,6 @@
         <p id="auth-error" class="auth-error"></p>
         <button type="submit" class="auth-btn" id="auth-submit">Giriş Yap</button>
       </form>
-
       <p class="auth-footer">
         <span id="auth-switch-text">Hesabın yok mu?</span>
         <a href="#" id="auth-switch-link">Kayıt Ol</a>
@@ -47,7 +42,6 @@
     </div>
   </div>
 
-  <!-- MAIN APP -->
   <div class="app" id="main-app" style="display:none;">
     <div class="channels-overlay" id="channels-overlay" onclick="closeMobileMenus()"></div>
 
@@ -65,14 +59,12 @@
         <h2 id="server-name">Home</h2>
         <span class="dropdown">▾</span>
       </div>
-
       <div class="channel-section">
         <div class="section-header" onclick="toggleSection(this)">
           <span class="arrow">▾</span> <span data-i18n="textChannels">TEXT CHANNELS</span>
         </div>
         <div class="channel-list" id="text-channels"></div>
       </div>
-
       <div class="channel-section">
         <div class="section-header" onclick="toggleSection(this)">
           <span class="arrow">▾</span> <span data-i18n="voiceChannels">VOICE CHANNELS</span>
@@ -82,7 +74,6 @@
           <div class="channel voice"><span class="icon">🔊</span> <span data-i18n="music">Music</span></div>
         </div>
       </div>
-
       <div class="user-panel">
         <div class="avatar-wrap" id="user-avatar-wrap">
           <div class="avatar" id="user-avatar">U</div>
@@ -107,23 +98,26 @@
           <span id="current-channel">general</span>
         </div>
         <div class="header-actions">
-          <input type="text" class="search" id="search-input" data-i18n-placeholder="searchPlaceholder" placeholder="Search" />
-          <button title="Notifications">🔔</button>
-          <button title="Pinned">📌</button>
+          <button title="Settings" onclick="openSettings()">⚙️</button>
           <button title="Members" onclick="toggleMembers()">👥</button>
         </div>
       </div>
-
       <div class="messages" id="messages"></div>
-
       <div class="message-input-area">
         <div class="input-wrapper">
           <button class="attach" title="Attach">+</button>
-          <input type="text" id="message-input" autocomplete="off" />
+          <input type="text" id="message-input" autocomplete="off" placeholder="Mesaj yaz..." />
           <button class="emoji" title="Emoji">😊</button>
           <button class="send" onclick="sendMessage()">➤</button>
         </div>
       </div>
+    </div>
+
+    <div class="mobile-bottom-bar" id="mobile-bottom-bar">
+      <button onclick="toggleChannels()" title="Kanallar">☰</button>
+      <button onclick="openSettings()" title="Ayarlar">⚙️</button>
+      <button onclick="toggleMembers()" title="Üyeler">👥</button>
+      <button onclick="logout()" title="Çıkış">🚪</button>
     </div>
 
     <div class="members" id="members-panel">
@@ -143,150 +137,67 @@
     <div class="settings-panel">
       <div class="settings-sidebar">
         <div class="settings-nav">
-          <div class="nav-item active" data-section="account" onclick="showSettingsSection('account')">
-            <span data-i18n="myAccount">My Account</span>
-          </div>
-          <div class="nav-item" data-section="profile" onclick="showSettingsSection('profile')">
-            <span data-i18n="userProfile">User Profile</span>
-          </div>
-          <div class="nav-item" data-section="appearance" onclick="showSettingsSection('appearance')">
-            <span data-i18n="appearance">Appearance</span>
-          </div>
-          <div class="nav-item plus-nav" data-section="plus" onclick="showSettingsSection('plus')">
-            ✨ Plus
-          </div>
-          <div class="nav-item" data-section="language" onclick="showSettingsSection('language')">
-            <span data-i18n="language">Language</span>
-          </div>
-          <div class="nav-item danger" onclick="logout()">
-            <span data-i18n="logOut">Log Out</span>
-          </div>
+          <div class="nav-item active" data-section="account" onclick="showSettingsSection('account')"><span data-i18n="myAccount">My Account</span></div>
+          <div class="nav-item" data-section="profile" onclick="showSettingsSection('profile')"><span data-i18n="userProfile">User Profile</span></div>
+          <div class="nav-item" data-section="appearance" onclick="showSettingsSection('appearance')"><span data-i18n="appearance">Appearance</span></div>
+          <div class="nav-item plus-nav" data-section="plus" onclick="showSettingsSection('plus')">✨ Plus</div>
+          <div class="nav-item" data-section="language" onclick="showSettingsSection('language')"><span data-i18n="language">Language</span></div>
+          <div class="nav-item danger" onclick="logout()"><span data-i18n="logOut">Log Out</span></div>
         </div>
       </div>
       <div class="settings-content">
         <button class="settings-close" onclick="closeSettings()">✕</button>
-
         <div class="settings-section active" id="section-account">
           <h2 data-i18n="myAccount">My Account</h2>
           <div class="account-card">
             <div class="account-banner"></div>
             <div class="account-info">
-              <div class="avatar-wrap" id="settings-avatar-wrap">
-                <div class="avatar large" id="settings-avatar-preview">U</div>
-              </div>
+              <div class="avatar-wrap" id="settings-avatar-wrap"><div class="avatar large" id="settings-avatar-preview">U</div></div>
               <div>
                 <div class="account-name" id="settings-display-name">User</div>
                 <div class="account-tag" id="settings-tag">#0001</div>
               </div>
             </div>
-            <div class="form-group">
-              <label data-i18n="username">Username</label>
-              <input type="text" id="settings-username" maxlength="32" />
-            </div>
-            <div class="form-group">
-              <label data-i18n="email">Email</label>
-              <input type="email" id="settings-email" />
-            </div>
+            <div class="form-group"><label data-i18n="username">Username</label><input type="text" id="settings-username" maxlength="32" /></div>
+            <div class="form-group"><label data-i18n="email">Email</label><input type="email" id="settings-email" /></div>
             <button class="auth-btn" onclick="saveAccountSettings()" data-i18n="saveChanges">Save Changes</button>
           </div>
         </div>
-
         <div class="settings-section" id="section-profile">
           <h2 data-i18n="userProfile">User Profile</h2>
-          <div class="form-group">
-            <label data-i18n="displayName">Display Name</label>
-            <input type="text" id="settings-displayname" maxlength="32" />
-          </div>
-          <div class="form-group">
-            <label data-i18n="avatarLetter">Avatar Letter</label>
-            <input type="text" id="settings-avatar" maxlength="1" />
-          </div>
-          <div class="form-group">
-            <label data-i18n="status">Status</label>
+          <div class="form-group"><label data-i18n="displayName">Display Name</label><input type="text" id="settings-displayname" maxlength="32" /></div>
+          <div class="form-group"><label data-i18n="avatarLetter">Avatar Letter</label><input type="text" id="settings-avatar" maxlength="1" /></div>
+          <div class="form-group"><label data-i18n="status">Status</label>
             <select id="settings-status">
-              <option value="online" data-i18n="online">Online</option>
-              <option value="idle" data-i18n="idle">Idle</option>
-              <option value="dnd" data-i18n="dnd">Do Not Disturb</option>
-              <option value="invisible" data-i18n="invisible">Invisible</option>
+              <option value="online">Online</option>
+              <option value="idle">Idle</option>
+              <option value="dnd">Do Not Disturb</option>
+              <option value="invisible">Invisible</option>
             </select>
-          </div>
-          <div class="form-group">
-            <label>Avatar Frame</label>
-            <div class="frame-options" id="frame-options">
-              <div class="frame-option active" data-frame="none" onclick="selectFrame('none')">A</div>
-              <div class="frame-option frame-glow locked" data-frame="glow" onclick="selectFrame('glow')">A</div>
-              <div class="frame-option frame-rainbow locked" data-frame="rainbow" onclick="selectFrame('rainbow')">A</div>
-              <div class="frame-option frame-pulse locked" data-frame="pulse" onclick="selectFrame('pulse')">A</div>
-              <div class="frame-option frame-gold locked" data-frame="gold" onclick="selectFrame('gold')">A</div>
-              <div class="frame-option frame-fire locked" data-frame="fire" onclick="selectFrame('fire')">A</div>
-            </div>
-            <p style="font-size:12px;color:var(--text-muted);margin-top:8px;" id="frame-hint">🔒 Plus ile animasyonlu çerçeveler açılır</p>
           </div>
           <button class="auth-btn" onclick="saveProfileSettings()" data-i18n="saveChanges">Save Changes</button>
         </div>
-
         <div class="settings-section" id="section-appearance">
           <h2 data-i18n="appearance">Appearance</h2>
-          <div class="form-group">
-            <label data-i18n="theme">Theme</label>
+          <div class="form-group"><label data-i18n="theme">Theme</label>
             <div class="theme-options">
-              <div class="theme-card active" data-theme="dark" onclick="setTheme('dark')">
-                <div class="theme-preview dark"></div>
-                <span>Dark</span>
-              </div>
-              <div class="theme-card" data-theme="darker" onclick="setTheme('darker')">
-                <div class="theme-preview darker"></div>
-                <span>Darker</span>
-              </div>
-              <div class="theme-card" data-theme="midnight" onclick="setTheme('midnight')">
-                <div class="theme-preview midnight"></div>
-                <span>Midnight</span>
-              </div>
-              <div class="theme-card" data-theme="purple" onclick="setTheme('purple')">
-                <div class="theme-preview purple"></div>
-                <span>Purple</span>
-              </div>
-              <div class="theme-card" data-theme="forest" onclick="setTheme('forest')">
-                <div class="theme-preview forest"></div>
-                <span>Forest</span>
-              </div>
-              <div class="theme-card" data-theme="ocean" onclick="setTheme('ocean')">
-                <div class="theme-preview ocean"></div>
-                <span>Ocean</span>
-              </div>
-              <div class="theme-card" data-theme="light" onclick="setTheme('light')">
-                <div class="theme-preview light"></div>
-                <span>Light</span>
-              </div>
+              <div class="theme-card active" data-theme="dark" onclick="setTheme('dark')"><div class="theme-preview dark"></div><span>Dark</span></div>
+              <div class="theme-card" data-theme="darker" onclick="setTheme('darker')"><div class="theme-preview darker"></div><span>Darker</span></div>
             </div>
           </div>
-          <div class="form-group">
-            <label data-i18n="messageDisplay">Message Display</label>
-            <label class="checkbox-label">
-              <input type="checkbox" id="compact-mode" onchange="toggleCompact()" />
-              <span data-i18n="compactMode">Compact Mode</span>
-            </label>
-          </div>
+          <div class="form-group"><label class="checkbox-label"><input type="checkbox" id="compact-mode" onchange="toggleCompact()" /> <span data-i18n="compactMode">Compact Mode</span></label></div>
         </div>
-
         <div class="settings-section" id="section-plus">
           <h2>✨ DK Plus</h2>
           <div class="plus-card">
             <h3>DK Plus</h3>
-            <p>Discord Nitro benzeri ekstra özellikler. Tamamen ücretsiz — sadece aç!</p>
-            <ul class="plus-features">
-              <li>Animasyonlu avatar çerçeveleri</li>
-              <li>Plus rozeti kullanıcı adında</li>
-              <li>Tüm temalar açık</li>
-              <li>Özel profil görünümü</li>
-            </ul>
+            <p>Ekstra özellikler (demo — aç/kapa)</p>
             <div class="plus-toggle" onclick="togglePlus()">
               <span id="plus-status-text">Plus Kapalı</span>
               <div class="toggle-switch" id="plus-switch"></div>
             </div>
           </div>
         </div>
-
         <div class="settings-section" id="section-language">
           <h2 data-i18n="language">Language</h2>
           <div class="lang-options">
@@ -302,10 +213,7 @@
     <div class="modal-content small">
       <h2 data-i18n="createServer">Create a Server</h2>
       <p class="modal-desc" data-i18n="createServerDesc">Your server is where you and your friends hang out.</p>
-      <div class="form-group">
-        <label data-i18n="serverName">Server Name</label>
-        <input type="text" id="new-server-name" maxlength="40" />
-      </div>
+      <div class="form-group"><label data-i18n="serverName">Server Name</label><input type="text" id="new-server-name" maxlength="40" /></div>
       <div class="modal-actions">
         <button class="cancel" onclick="closeAddServer()" data-i18n="cancel">Cancel</button>
         <button class="auth-btn" onclick="createServer()" data-i18n="create">Create</button>
