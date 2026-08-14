@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="mobile-fix.css" />
   <link rel="stylesheet" href="plus-features.css" />
+  <link rel="stylesheet" href="frame-fix.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
@@ -165,13 +166,14 @@
           <div class="form-group">
             <label>Avatar Frame</label>
             <div class="frame-options" id="frame-options">
-              <div class="frame-option active" data-frame="none" onclick="selectFrame('none')">A</div>
-              <div class="frame-option frame-glow" data-frame="glow" onclick="selectFrame('glow')">A</div>
-              <div class="frame-option frame-rainbow" data-frame="rainbow" onclick="selectFrame('rainbow')">A</div>
-              <div class="frame-option frame-pulse" data-frame="pulse" onclick="selectFrame('pulse')">A</div>
-              <div class="frame-option frame-gold" data-frame="gold" onclick="selectFrame('gold')">A</div>
-              <div class="frame-option frame-fire" data-frame="fire" onclick="selectFrame('fire')">A</div>
+              <div class="frame-option active" data-frame="none" onclick="selectFrame('none')" title="Yok">A</div>
+              <div class="frame-option frame-glow" data-frame="glow" onclick="selectFrame('glow')" title="Glow">A</div>
+              <div class="frame-option frame-rainbow" data-frame="rainbow" onclick="selectFrame('rainbow')" title="Rainbow">A</div>
+              <div class="frame-option frame-pulse" data-frame="pulse" onclick="selectFrame('pulse')" title="Pulse">A</div>
+              <div class="frame-option frame-gold" data-frame="gold" onclick="selectFrame('gold')" title="Gold">A</div>
+              <div class="frame-option frame-fire" data-frame="fire" onclick="selectFrame('fire')" title="Fire">A</div>
             </div>
+            <p style="font-size:11px;color:#949ba4;margin-top:6px;">Glow · Rainbow · Pulse · Gold · Fire</p>
           </div>
           <button class="auth-btn" onclick="saveProfileSettings()" data-i18n="saveChanges">Save Changes</button>
         </div>
@@ -241,7 +243,6 @@
     </div>
   </div>
 
-  <!-- PLUS SATIN ALMA -->
   <div class="modal" id="plus-purchase-modal">
     <div class="plus-purchase-panel">
       <button class="settings-close" onclick="closePlusPurchase()">✕</button>
