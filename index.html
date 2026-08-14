@@ -2,13 +2,13 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Discord Klon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>DK Chat</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
-  <!-- LOGIN / REGISTER SCREEN -->
+  <!-- LOGIN / REGISTER -->
   <div id="auth-screen" class="auth-screen">
     <div class="auth-bg"></div>
     <div class="auth-card">
@@ -49,11 +49,10 @@
 
   <!-- MAIN APP -->
   <div class="app" id="main-app" style="display:none;">
-    <!-- Servers -->
+    <div class="channels-overlay" id="channels-overlay" onclick="closeMobileMenus()"></div>
+
     <div class="servers">
-      <div class="server-icon home active" data-server="home" title="Home">
-        🏠
-      </div>
+      <div class="server-icon home active" data-server="home" title="Home">🏠</div>
       <div class="separator"></div>
       <div class="server-icon" data-server="oyun" title="Gaming" style="background:#5865f2;">O</div>
       <div class="server-icon" data-server="muzik" title="Music" style="background:#eb459e;">M</div>
@@ -61,8 +60,7 @@
       <div class="server-icon add" id="add-server-btn" title="Add a Server">+</div>
     </div>
 
-    <!-- Channels -->
-    <div class="channels">
+    <div class="channels" id="channels-panel">
       <div class="server-header">
         <h2 id="server-name">Home</h2>
         <span class="dropdown">▾</span>
@@ -86,7 +84,9 @@
       </div>
 
       <div class="user-panel">
-        <div class="avatar" id="user-avatar">U</div>
+        <div class="avatar-wrap" id="user-avatar-wrap">
+          <div class="avatar" id="user-avatar">U</div>
+        </div>
         <div class="user-info">
           <div class="username" id="username">User</div>
           <div class="status" id="user-status-text" data-i18n="online">Online</div>
@@ -99,9 +99,9 @@
       </div>
     </div>
 
-    <!-- Chat -->
     <div class="chat">
       <div class="chat-header">
+        <button class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">☰</button>
         <div class="channel-name">
           <span class="hash">#</span>
           <span id="current-channel">general</span>
@@ -126,7 +126,6 @@
       </div>
     </div>
 
-    <!-- Members -->
     <div class="members" id="members-panel">
       <div class="members-header"><span data-i18n="members">Members</span> — <span id="member-count">0</span></div>
       <div class="member-group">
@@ -140,7 +139,6 @@
     </div>
   </div>
 
-  <!-- SETTINGS MODAL -->
   <div class="modal" id="settings-modal">
     <div class="settings-panel">
       <div class="settings-sidebar">
@@ -153,6 +151,9 @@
           </div>
           <div class="nav-item" data-section="appearance" onclick="showSettingsSection('appearance')">
             <span data-i18n="appearance">Appearance</span>
+          </div>
+          <div class="nav-item plus-nav" data-section="plus" onclick="showSettingsSection('plus')">
+            ✨ Plus
           </div>
           <div class="nav-item" data-section="language" onclick="showSettingsSection('language')">
             <span data-i18n="language">Language</span>
@@ -170,7 +171,9 @@
           <div class="account-card">
             <div class="account-banner"></div>
             <div class="account-info">
-              <div class="avatar large" id="settings-avatar-preview">U</div>
+              <div class="avatar-wrap" id="settings-avatar-wrap">
+                <div class="avatar large" id="settings-avatar-preview">U</div>
+              </div>
               <div>
                 <div class="account-name" id="settings-display-name">User</div>
                 <div class="account-tag" id="settings-tag">#0001</div>
@@ -207,6 +210,18 @@
               <option value="invisible" data-i18n="invisible">Invisible</option>
             </select>
           </div>
+          <div class="form-group">
+            <label>Avatar Frame</label>
+            <div class="frame-options" id="frame-options">
+              <div class="frame-option active" data-frame="none" onclick="selectFrame('none')">A</div>
+              <div class="frame-option frame-glow locked" data-frame="glow" onclick="selectFrame('glow')">A</div>
+              <div class="frame-option frame-rainbow locked" data-frame="rainbow" onclick="selectFrame('rainbow')">A</div>
+              <div class="frame-option frame-pulse locked" data-frame="pulse" onclick="selectFrame('pulse')">A</div>
+              <div class="frame-option frame-gold locked" data-frame="gold" onclick="selectFrame('gold')">A</div>
+              <div class="frame-option frame-fire locked" data-frame="fire" onclick="selectFrame('fire')">A</div>
+            </div>
+            <p style="font-size:12px;color:var(--text-muted);margin-top:8px;" id="frame-hint">🔒 Plus ile animasyonlu çerçeveler açılır</p>
+          </div>
           <button class="auth-btn" onclick="saveProfileSettings()" data-i18n="saveChanges">Save Changes</button>
         </div>
 
@@ -217,11 +232,31 @@
             <div class="theme-options">
               <div class="theme-card active" data-theme="dark" onclick="setTheme('dark')">
                 <div class="theme-preview dark"></div>
-                <span data-i18n="dark">Dark</span>
+                <span>Dark</span>
               </div>
               <div class="theme-card" data-theme="darker" onclick="setTheme('darker')">
                 <div class="theme-preview darker"></div>
-                <span data-i18n="darker">Darker</span>
+                <span>Darker</span>
+              </div>
+              <div class="theme-card" data-theme="midnight" onclick="setTheme('midnight')">
+                <div class="theme-preview midnight"></div>
+                <span>Midnight</span>
+              </div>
+              <div class="theme-card" data-theme="purple" onclick="setTheme('purple')">
+                <div class="theme-preview purple"></div>
+                <span>Purple</span>
+              </div>
+              <div class="theme-card" data-theme="forest" onclick="setTheme('forest')">
+                <div class="theme-preview forest"></div>
+                <span>Forest</span>
+              </div>
+              <div class="theme-card" data-theme="ocean" onclick="setTheme('ocean')">
+                <div class="theme-preview ocean"></div>
+                <span>Ocean</span>
+              </div>
+              <div class="theme-card" data-theme="light" onclick="setTheme('light')">
+                <div class="theme-preview light"></div>
+                <span>Light</span>
               </div>
             </div>
           </div>
@@ -234,22 +269,35 @@
           </div>
         </div>
 
+        <div class="settings-section" id="section-plus">
+          <h2>✨ DK Plus</h2>
+          <div class="plus-card">
+            <h3>DK Plus</h3>
+            <p>Discord Nitro benzeri ekstra özellikler. Tamamen ücretsiz — sadece aç!</p>
+            <ul class="plus-features">
+              <li>Animasyonlu avatar çerçeveleri</li>
+              <li>Plus rozeti kullanıcı adında</li>
+              <li>Tüm temalar açık</li>
+              <li>Özel profil görünümü</li>
+            </ul>
+            <div class="plus-toggle" onclick="togglePlus()">
+              <span id="plus-status-text">Plus Kapalı</span>
+              <div class="toggle-switch" id="plus-switch"></div>
+            </div>
+          </div>
+        </div>
+
         <div class="settings-section" id="section-language">
           <h2 data-i18n="language">Language</h2>
           <div class="lang-options">
-            <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">
-              🇹🇷 Türkçe
-            </button>
-            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">
-              🇬🇧 English
-            </button>
+            <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
+            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 English</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Add Server Modal -->
   <div class="modal" id="add-server-modal">
     <div class="modal-content small">
       <h2 data-i18n="createServer">Create a Server</h2>
