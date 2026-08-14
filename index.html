@@ -47,26 +47,17 @@
 
   <div class="app" id="main-app" style="display:none;">
     <div class="channels-overlay" id="channels-overlay" onclick="closeMobileMenus()"></div>
+
     <div class="servers">
-      <div class="server-icon home active" data-server="home" title="Home">🏠</div>
-      <div class="separator"></div>
-      <div class="server-icon" data-server="oyun" title="Gaming" style="background:#5865f2;">O</div>
-      <div class="server-icon" data-server="muzik" title="Music" style="background:#eb459e;">M</div>
-      <div class="server-icon" data-server="kod" title="Coding" style="background:#57f287;">K</div>
-      <div class="server-icon add" id="add-server-btn" title="Add a Server">+</div>
+      <div class="server-icon home active" data-server="home" title="Ana Sayfa" onclick="goHome()">🏠</div>
     </div>
 
     <div class="channels" id="channels-panel">
-      <div class="server-header"><h2 id="server-name">Home</h2><span class="dropdown">▾</span></div>
+      <div class="server-header"><h2 id="server-name">DK Chat</h2></div>
       <div class="channel-section">
-        <div class="section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> <span data-i18n="textChannels">TEXT CHANNELS</span></div>
-        <div class="channel-list" id="text-channels"></div>
-      </div>
-      <div class="channel-section">
-        <div class="section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> <span data-i18n="voiceChannels">VOICE CHANNELS</span></div>
-        <div class="channel-list" id="voice-channels">
-          <div class="channel voice"><span class="icon">🔊</span> <span data-i18n="general">General</span></div>
-          <div class="channel voice"><span class="icon">🔊</span> <span data-i18n="music">Music</span></div>
+        <div class="section-header"><span class="arrow">▾</span> SOHBET</div>
+        <div class="channel-list" id="text-channels">
+          <div class="channel active" id="ch-oda"><span class="icon">#</span> oda</div>
         </div>
       </div>
       <div class="user-panel">
@@ -86,7 +77,7 @@
     <div class="chat">
       <div class="chat-header">
         <button class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">☰</button>
-        <div class="channel-name"><span class="hash">#</span><span id="current-channel">genel</span></div>
+        <div class="channel-name"><span class="hash">#</span><span id="current-channel">oda</span></div>
         <div id="room-code-badge">
           <span>Kod:</span>
           <span class="code-text">------</span>
@@ -112,7 +103,7 @@
     </div>
 
     <div class="mobile-bottom-bar" id="mobile-bottom-bar">
-      <button onclick="toggleChannels()" title="Kanallar">☰</button>
+      <button onclick="toggleChannels()" title="Menü">☰</button>
       <button onclick="openRoomModal()" title="Oda">🔗</button>
       <button onclick="openSettings()" title="Ayarlar">⚙️</button>
       <button onclick="toggleMembers()" title="Üyeler">👥</button>
@@ -131,12 +122,11 @@
     </div>
   </div>
 
-  <!-- ROOM MODAL -->
   <div class="modal" id="room-modal">
     <div class="room-modal-panel">
       <button class="settings-close" onclick="closeRoomModal()">✕</button>
       <h2>🔗 Oda</h2>
-      <p class="room-desc">Kod ile arkadaşınla gerçek sohbet. Sahte mesaj yok.</p>
+      <p class="room-desc">Kod ile arkadaşınla gerçek sohbet.</p>
       <div class="room-actions">
         <button class="auth-btn" onclick="createRoomAction()">Oda Oluştur</button>
         <div class="room-divider">veya kod ile katıl</div>
@@ -245,7 +235,6 @@
       <div class="plus-purchase-hero">
         <div class="plus-logo-big">✨</div>
         <h2>DK Plus</h2>
-        <p>Profilini bir üst seviyeye taşı</p>
       </div>
       <div class="plus-plans">
         <a class="plus-plan monthly" href="https://mdcforlegal.github.io/personal-links/" target="_blank" rel="noopener">
