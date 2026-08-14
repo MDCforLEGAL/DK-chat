@@ -6,6 +6,7 @@
   <title>DK Chat</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="mobile-fix.css" />
+  <link rel="stylesheet" href="plus-features.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
@@ -44,7 +45,6 @@
 
   <div class="app" id="main-app" style="display:none;">
     <div class="channels-overlay" id="channels-overlay" onclick="closeMobileMenus()"></div>
-
     <div class="servers">
       <div class="server-icon home active" data-server="home" title="Home">🏠</div>
       <div class="separator"></div>
@@ -55,29 +55,20 @@
     </div>
 
     <div class="channels" id="channels-panel">
-      <div class="server-header">
-        <h2 id="server-name">Home</h2>
-        <span class="dropdown">▾</span>
-      </div>
+      <div class="server-header"><h2 id="server-name">Home</h2><span class="dropdown">▾</span></div>
       <div class="channel-section">
-        <div class="section-header" onclick="toggleSection(this)">
-          <span class="arrow">▾</span> <span data-i18n="textChannels">TEXT CHANNELS</span>
-        </div>
+        <div class="section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> <span data-i18n="textChannels">TEXT CHANNELS</span></div>
         <div class="channel-list" id="text-channels"></div>
       </div>
       <div class="channel-section">
-        <div class="section-header" onclick="toggleSection(this)">
-          <span class="arrow">▾</span> <span data-i18n="voiceChannels">VOICE CHANNELS</span>
-        </div>
+        <div class="section-header" onclick="toggleSection(this)"><span class="arrow">▾</span> <span data-i18n="voiceChannels">VOICE CHANNELS</span></div>
         <div class="channel-list" id="voice-channels">
           <div class="channel voice"><span class="icon">🔊</span> <span data-i18n="general">General</span></div>
           <div class="channel voice"><span class="icon">🔊</span> <span data-i18n="music">Music</span></div>
         </div>
       </div>
       <div class="user-panel">
-        <div class="avatar-wrap" id="user-avatar-wrap">
-          <div class="avatar" id="user-avatar">U</div>
-        </div>
+        <div class="avatar-wrap" id="user-avatar-wrap"><div class="avatar" id="user-avatar">U</div></div>
         <div class="user-info">
           <div class="username" id="username">User</div>
           <div class="status" id="user-status-text" data-i18n="online">Online</div>
@@ -93,11 +84,9 @@
     <div class="chat">
       <div class="chat-header">
         <button class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">☰</button>
-        <div class="channel-name">
-          <span class="hash">#</span>
-          <span id="current-channel">general</span>
-        </div>
+        <div class="channel-name"><span class="hash">#</span><span id="current-channel">general</span></div>
         <div class="header-actions">
+          <button title="Plus" onclick="openPlusPurchase()">✨</button>
           <button title="Settings" onclick="openSettings()">⚙️</button>
           <button title="Members" onclick="toggleMembers()">👥</button>
         </div>
@@ -115,9 +104,9 @@
 
     <div class="mobile-bottom-bar" id="mobile-bottom-bar">
       <button onclick="toggleChannels()" title="Kanallar">☰</button>
+      <button onclick="openPlusPurchase()" title="Plus">✨</button>
       <button onclick="openSettings()" title="Ayarlar">⚙️</button>
       <button onclick="toggleMembers()" title="Üyeler">👥</button>
-      <button onclick="logout()" title="Çıkış">🚪</button>
     </div>
 
     <div class="members" id="members-panel">
@@ -150,7 +139,7 @@
         <div class="settings-section active" id="section-account">
           <h2 data-i18n="myAccount">My Account</h2>
           <div class="account-card">
-            <div class="account-banner"></div>
+            <div class="account-banner banner-wave"></div>
             <div class="account-info">
               <div class="avatar-wrap" id="settings-avatar-wrap"><div class="avatar large" id="settings-avatar-preview">U</div></div>
               <div>
@@ -169,11 +158,20 @@
           <div class="form-group"><label data-i18n="avatarLetter">Avatar Letter</label><input type="text" id="settings-avatar" maxlength="1" /></div>
           <div class="form-group"><label data-i18n="status">Status</label>
             <select id="settings-status">
-              <option value="online">Online</option>
-              <option value="idle">Idle</option>
-              <option value="dnd">Do Not Disturb</option>
-              <option value="invisible">Invisible</option>
+              <option value="online">Online</option><option value="idle">Idle</option>
+              <option value="dnd">Do Not Disturb</option><option value="invisible">Invisible</option>
             </select>
+          </div>
+          <div class="form-group">
+            <label>Avatar Frame</label>
+            <div class="frame-options" id="frame-options">
+              <div class="frame-option active" data-frame="none" onclick="selectFrame('none')">A</div>
+              <div class="frame-option frame-glow" data-frame="glow" onclick="selectFrame('glow')">A</div>
+              <div class="frame-option frame-rainbow" data-frame="rainbow" onclick="selectFrame('rainbow')">A</div>
+              <div class="frame-option frame-pulse" data-frame="pulse" onclick="selectFrame('pulse')">A</div>
+              <div class="frame-option frame-gold" data-frame="gold" onclick="selectFrame('gold')">A</div>
+              <div class="frame-option frame-fire" data-frame="fire" onclick="selectFrame('fire')">A</div>
+            </div>
           </div>
           <button class="auth-btn" onclick="saveProfileSettings()" data-i18n="saveChanges">Save Changes</button>
         </div>
@@ -185,16 +183,38 @@
               <div class="theme-card" data-theme="darker" onclick="setTheme('darker')"><div class="theme-preview darker"></div><span>Darker</span></div>
             </div>
           </div>
-          <div class="form-group"><label class="checkbox-label"><input type="checkbox" id="compact-mode" onchange="toggleCompact()" /> <span data-i18n="compactMode">Compact Mode</span></label></div>
+          <div class="form-group"><label class="checkbox-label"><input type="checkbox" id="compact-mode" onchange="toggleCompact()" /> Compact</label></div>
         </div>
         <div class="settings-section" id="section-plus">
           <h2>✨ DK Plus</h2>
           <div class="plus-card">
             <h3>DK Plus</h3>
-            <p>Ekstra özellikler (demo — aç/kapa)</p>
-            <div class="plus-toggle" onclick="togglePlus()">
-              <span id="plus-status-text">Plus Kapalı</span>
-              <div class="toggle-switch" id="plus-switch"></div>
+            <p>Hareketli profil, isim efektleri, özel temalar</p>
+            <ul class="plus-features">
+              <li>Animasyonlu avatar çerçevesi</li>
+              <li>Hareketli profil banner</li>
+              <li>İsim efektleri (glow, rainbow…)</li>
+              <li>PLUS rozeti</li>
+            </ul>
+            <p id="plus-status-text">Plus yok</p>
+            <button class="auth-btn" onclick="openPlusPurchase()">Plus Satın Al</button>
+            <div id="plus-effects-box" style="display:none;margin-top:16px;">
+              <label>İsim Efekti</label>
+              <div class="name-effect-options">
+                <button type="button" class="name-fx-btn" data-fx="none" onclick="setNameEffect('none')">Normal</button>
+                <button type="button" class="name-fx-btn" data-fx="glow" onclick="setNameEffect('glow')">Glow</button>
+                <button type="button" class="name-fx-btn" data-fx="rainbow" onclick="setNameEffect('rainbow')">Rainbow</button>
+                <button type="button" class="name-fx-btn" data-fx="gradient" onclick="setNameEffect('gradient')">Gradient</button>
+                <button type="button" class="name-fx-btn" data-fx="shine" onclick="setNameEffect('shine')">Shine</button>
+              </div>
+              <label style="margin-top:12px;display:block;">Banner</label>
+              <div class="name-effect-options">
+                <button type="button" class="banner-fx-btn" data-banner="default" onclick="setBannerStyle('default')">Varsayılan</button>
+                <button type="button" class="banner-fx-btn" data-banner="wave" onclick="setBannerStyle('wave')">Dalga</button>
+                <button type="button" class="banner-fx-btn" data-banner="aurora" onclick="setBannerStyle('aurora')">Aurora</button>
+                <button type="button" class="banner-fx-btn" data-banner="fire" onclick="setBannerStyle('fire')">Ateş</button>
+                <button type="button" class="banner-fx-btn" data-banner="neon" onclick="setBannerStyle('neon')">Neon</button>
+              </div>
             </div>
           </div>
         </div>
@@ -221,6 +241,40 @@
     </div>
   </div>
 
+  <!-- PLUS SATIN ALMA -->
+  <div class="modal" id="plus-purchase-modal">
+    <div class="plus-purchase-panel">
+      <button class="settings-close" onclick="closePlusPurchase()">✕</button>
+      <div class="plus-purchase-hero">
+        <div class="plus-logo-big">✨</div>
+        <h2>DK Plus</h2>
+        <p>Profilini bir üst seviyeye taşı</p>
+      </div>
+      <ul class="plus-purchase-list">
+        <li>Hareketli avatar çerçevesi</li>
+        <li>Animasyonlu profil banner</li>
+        <li>İsim efektleri (glow, rainbow…)</li>
+        <li>Özel Plus temalar</li>
+        <li>PLUS rozeti isminde</li>
+      </ul>
+      <div class="plus-plans">
+        <a class="plus-plan monthly" href="https://mdcforlegal.github.io/personal-links/" target="_blank" rel="noopener">
+          <div class="plan-label">Aylık</div>
+          <div class="plan-price">Aylık plan</div>
+          <div class="plan-cta">Satın Al →</div>
+        </a>
+        <a class="plus-plan yearly" href="https://mdcforlegal.github.io/personal-links/" target="_blank" rel="noopener">
+          <div class="plan-badge">Önerilen</div>
+          <div class="plan-label">Yıllık</div>
+          <div class="plan-price">Yıllık plan</div>
+          <div class="plan-cta">Satın Al →</div>
+        </a>
+      </div>
+      <p class="plus-purchase-note">Ödeme için personal-links sayfasına yönlendirileceksin</p>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+  <script src="plus-features.js"></script>
 </body>
 </html>
