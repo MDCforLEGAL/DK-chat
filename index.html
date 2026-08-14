@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="mobile-fix.css" />
   <link rel="stylesheet" href="plus-features.css" />
   <link rel="stylesheet" href="frame-fix.css" />
+  <link rel="stylesheet" href="room.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
@@ -85,8 +86,15 @@
     <div class="chat">
       <div class="chat-header">
         <button class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">☰</button>
-        <div class="channel-name"><span class="hash">#</span><span id="current-channel">general</span></div>
+        <div class="channel-name"><span class="hash">#</span><span id="current-channel">genel</span></div>
+        <div id="room-code-badge">
+          <span>Kod:</span>
+          <span class="code-text">------</span>
+          <button onclick="copyRoomCode()" title="Kopyala">📋</button>
+          <button onclick="leaveRoomAction()" title="Ayrıl">✕</button>
+        </div>
         <div class="header-actions">
+          <button title="Oda" onclick="openRoomModal()">🔗</button>
           <button title="Plus" onclick="openPlusPurchase()">✨</button>
           <button title="Settings" onclick="openSettings()">⚙️</button>
           <button title="Members" onclick="toggleMembers()">👥</button>
@@ -105,7 +113,7 @@
 
     <div class="mobile-bottom-bar" id="mobile-bottom-bar">
       <button onclick="toggleChannels()" title="Kanallar">☰</button>
-      <button onclick="openPlusPurchase()" title="Plus">✨</button>
+      <button onclick="openRoomModal()" title="Oda">🔗</button>
       <button onclick="openSettings()" title="Ayarlar">⚙️</button>
       <button onclick="toggleMembers()" title="Üyeler">👥</button>
     </div>
@@ -120,6 +128,22 @@
         <div class="group-title"><span data-i18n="offline">OFFLINE</span> — <span id="offline-count">0</span></div>
         <div id="offline-members"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- ROOM MODAL -->
+  <div class="modal" id="room-modal">
+    <div class="room-modal-panel">
+      <button class="settings-close" onclick="closeRoomModal()">✕</button>
+      <h2>🔗 Oda</h2>
+      <p class="room-desc">Kod ile arkadaşınla gerçek sohbet. Sahte mesaj yok.</p>
+      <div class="room-actions">
+        <button class="auth-btn" onclick="createRoomAction()">Oda Oluştur</button>
+        <div class="room-divider">veya kod ile katıl</div>
+        <input type="text" id="join-code-input" maxlength="8" placeholder="KOD" autocomplete="off" />
+        <button class="auth-btn" onclick="joinRoomAction()" style="background:#23a559;">Koda Katıl</button>
+      </div>
+      <p id="room-error"></p>
     </div>
   </div>
 
@@ -173,7 +197,6 @@
               <div class="frame-option frame-gold" data-frame="gold" onclick="selectFrame('gold')" title="Gold">A</div>
               <div class="frame-option frame-fire" data-frame="fire" onclick="selectFrame('fire')" title="Fire">A</div>
             </div>
-            <p style="font-size:11px;color:#949ba4;margin-top:6px;">Glow · Rainbow · Pulse · Gold · Fire</p>
           </div>
           <button class="auth-btn" onclick="saveProfileSettings()" data-i18n="saveChanges">Save Changes</button>
         </div>
@@ -185,39 +208,13 @@
               <div class="theme-card" data-theme="darker" onclick="setTheme('darker')"><div class="theme-preview darker"></div><span>Darker</span></div>
             </div>
           </div>
-          <div class="form-group"><label class="checkbox-label"><input type="checkbox" id="compact-mode" onchange="toggleCompact()" /> Compact</label></div>
         </div>
         <div class="settings-section" id="section-plus">
           <h2>✨ DK Plus</h2>
           <div class="plus-card">
             <h3>DK Plus</h3>
-            <p>Hareketli profil, isim efektleri, özel temalar</p>
-            <ul class="plus-features">
-              <li>Animasyonlu avatar çerçevesi</li>
-              <li>Hareketli profil banner</li>
-              <li>İsim efektleri (glow, rainbow…)</li>
-              <li>PLUS rozeti</li>
-            </ul>
             <p id="plus-status-text">Plus yok</p>
             <button class="auth-btn" onclick="openPlusPurchase()">Plus Satın Al</button>
-            <div id="plus-effects-box" style="display:none;margin-top:16px;">
-              <label>İsim Efekti</label>
-              <div class="name-effect-options">
-                <button type="button" class="name-fx-btn" data-fx="none" onclick="setNameEffect('none')">Normal</button>
-                <button type="button" class="name-fx-btn" data-fx="glow" onclick="setNameEffect('glow')">Glow</button>
-                <button type="button" class="name-fx-btn" data-fx="rainbow" onclick="setNameEffect('rainbow')">Rainbow</button>
-                <button type="button" class="name-fx-btn" data-fx="gradient" onclick="setNameEffect('gradient')">Gradient</button>
-                <button type="button" class="name-fx-btn" data-fx="shine" onclick="setNameEffect('shine')">Shine</button>
-              </div>
-              <label style="margin-top:12px;display:block;">Banner</label>
-              <div class="name-effect-options">
-                <button type="button" class="banner-fx-btn" data-banner="default" onclick="setBannerStyle('default')">Varsayılan</button>
-                <button type="button" class="banner-fx-btn" data-banner="wave" onclick="setBannerStyle('wave')">Dalga</button>
-                <button type="button" class="banner-fx-btn" data-banner="aurora" onclick="setBannerStyle('aurora')">Aurora</button>
-                <button type="button" class="banner-fx-btn" data-banner="fire" onclick="setBannerStyle('fire')">Ateş</button>
-                <button type="button" class="banner-fx-btn" data-banner="neon" onclick="setBannerStyle('neon')">Neon</button>
-              </div>
-            </div>
           </div>
         </div>
         <div class="settings-section" id="section-language">
@@ -234,7 +231,6 @@
   <div class="modal" id="add-server-modal">
     <div class="modal-content small">
       <h2 data-i18n="createServer">Create a Server</h2>
-      <p class="modal-desc" data-i18n="createServerDesc">Your server is where you and your friends hang out.</p>
       <div class="form-group"><label data-i18n="serverName">Server Name</label><input type="text" id="new-server-name" maxlength="40" /></div>
       <div class="modal-actions">
         <button class="cancel" onclick="closeAddServer()" data-i18n="cancel">Cancel</button>
@@ -251,13 +247,6 @@
         <h2>DK Plus</h2>
         <p>Profilini bir üst seviyeye taşı</p>
       </div>
-      <ul class="plus-purchase-list">
-        <li>Hareketli avatar çerçevesi</li>
-        <li>Animasyonlu profil banner</li>
-        <li>İsim efektleri (glow, rainbow…)</li>
-        <li>Özel Plus temalar</li>
-        <li>PLUS rozeti isminde</li>
-      </ul>
       <div class="plus-plans">
         <a class="plus-plan monthly" href="https://mdcforlegal.github.io/personal-links/" target="_blank" rel="noopener">
           <div class="plan-label">Aylık</div>
@@ -271,11 +260,12 @@
           <div class="plan-cta">Satın Al →</div>
         </a>
       </div>
-      <p class="plus-purchase-note">Ödeme için personal-links sayfasına yönlendirileceksin</p>
     </div>
   </div>
 
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <script src="app.js"></script>
   <script src="plus-features.js"></script>
+  <script src="room.js"></script>
 </body>
 </html>
