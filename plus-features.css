@@ -1,0 +1,55 @@
+/* Plus features: name effects, banners, purchase modal, frames */
+.username .name-text.name-fx-glow{color:#fff;text-shadow:0 0 8px #f47fff,0 0 16px #f47fff;animation:nameGlow 2s ease-in-out infinite}
+.username .name-text.name-fx-rainbow{background:linear-gradient(90deg,#ff6b6b,#feca57,#48dbfb,#ff9ff3,#54a0ff,#ff6b6b);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameRainbow 3s linear infinite}
+.username .name-text.name-fx-gradient{background:linear-gradient(90deg,#f47fff,#5865f2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.username .name-text.name-fx-shine{background:linear-gradient(90deg,#fff 0%,#f47fff 40%,#fff 50%,#5865f2 60%,#fff 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:nameShine 2.5s linear infinite}
+@keyframes nameGlow{0%,100%{text-shadow:0 0 6px #f47fff,0 0 12px #f47fff}50%{text-shadow:0 0 12px #f47fff,0 0 24px #5865f2}}
+@keyframes nameRainbow{to{background-position:200% center}}
+@keyframes nameShine{to{background-position:200% center}}
+
+.account-banner,.profile-banner{background:linear-gradient(90deg,var(--brand,#5865f2),#eb459e,#f47fff,var(--brand,#5865f2));background-size:300% 100%}
+.banner-wave{animation:bannerWave 4s ease infinite!important}
+.banner-aurora{background:linear-gradient(120deg,#1a1525,#c084fc,#5865f2,#f47fff,#1a1525)!important;background-size:300% 100%!important;animation:bannerWave 5s ease infinite!important}
+.banner-fire{background:linear-gradient(90deg,#ef4444,#f97316,#fbbf24,#ef4444)!important;background-size:300% 100%!important;animation:bannerWave 3s ease infinite!important}
+.banner-neon{background:linear-gradient(90deg,#22d3ee,#a855f7,#ec4899,#22d3ee)!important;background-size:300% 100%!important;animation:bannerWave 3.5s ease infinite!important}
+@keyframes bannerWave{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+.avatar-wrap.frame-glow .avatar{box-shadow:0 0 0 3px #f47fff,0 0 12px #f47fff;animation:frameGlow 2s ease-in-out infinite}
+.avatar-wrap.frame-rainbow .avatar{animation:frameRainbow 3s linear infinite}
+.avatar-wrap.frame-pulse .avatar{box-shadow:0 0 0 3px #5865f2;animation:framePulse 1.5s ease-in-out infinite}
+.avatar-wrap.frame-gold .avatar{box-shadow:0 0 0 3px #f0b232,0 0 10px rgba(240,178,50,.5)}
+.avatar-wrap.frame-fire .avatar{box-shadow:0 0 0 3px #ff6b35;animation:frameFire 1.2s ease-in-out infinite}
+@keyframes frameGlow{0%,100%{box-shadow:0 0 0 3px #f47fff,0 0 8px #f47fff}50%{box-shadow:0 0 0 4px #f47fff,0 0 18px #f47fff}}
+@keyframes frameRainbow{0%{box-shadow:0 0 0 3px #ff6b6b}20%{box-shadow:0 0 0 3px #feca57}40%{box-shadow:0 0 0 3px #48dbfb}60%{box-shadow:0 0 0 3px #ff9ff3}80%{box-shadow:0 0 0 3px #54a0ff}100%{box-shadow:0 0 0 3px #ff6b6b}}
+@keyframes framePulse{0%,100%{transform:scale(1);box-shadow:0 0 0 3px #5865f2}50%{transform:scale(1.08);box-shadow:0 0 0 5px #5865f2}}
+@keyframes frameFire{0%,100%{box-shadow:0 0 0 3px #ff6b35,0 0 8px #ff6b35}50%{box-shadow:0 0 0 4px #ff4500,0 0 16px #ff4500}}
+
+.plus-badge{display:inline-flex;align-items:center;background:linear-gradient(90deg,#f47fff,#5865f2);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:4px}
+
+.plus-purchase-panel{background:var(--bg-primary,#313338);border-radius:16px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto;padding:24px 20px;position:relative;animation:slideUp .35s cubic-bezier(.16,1,.3,1)}
+.plus-purchase-hero{text-align:center;margin-bottom:16px}
+.plus-logo-big{font-size:48px;margin-bottom:8px}
+.plus-purchase-hero h2{font-size:28px;background:linear-gradient(90deg,#f47fff,#5865f2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.plus-purchase-hero p{color:var(--text-muted,#949ba4);font-size:14px}
+.plus-purchase-list{list-style:none;margin:12px 0 20px;padding:0 8px}
+.plus-purchase-list li{font-size:14px;padding:6px 0;color:var(--text-normal,#dbdee1)}
+.plus-purchase-list li::before{content:"✦ ";color:#f47fff}
+.plus-plans{display:flex;flex-direction:column;gap:12px}
+.plus-plan{display:block;text-decoration:none;background:var(--bg-secondary,#2b2d31);border:2px solid var(--bg-modifier,#35373c);border-radius:12px;padding:16px;color:var(--text-normal,#dbdee1);position:relative;transition:border-color .15s,transform .1s}
+.plus-plan:hover{border-color:#5865f2;transform:scale(1.02)}
+.plus-plan.yearly{border-color:#f47fff;background:linear-gradient(135deg,rgba(244,127,255,.12),rgba(88,101,242,.12))}
+.plan-badge{position:absolute;top:-10px;right:12px;background:linear-gradient(90deg,#f47fff,#5865f2);color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:10px}
+.plan-label{font-size:13px;color:var(--text-muted,#949ba4);text-transform:uppercase}
+.plan-price{font-size:18px;font-weight:700;margin:4px 0}
+.plan-cta{font-size:14px;color:#5865f2;font-weight:600}
+.plus-purchase-note{text-align:center;font-size:12px;color:var(--text-muted,#949ba4);margin-top:14px}
+
+.name-effect-options{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.name-fx-btn,.banner-fx-btn{background:var(--bg-secondary,#2b2d31);border:2px solid transparent;color:var(--text-normal,#dbdee1);padding:6px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit}
+.name-fx-btn.active,.banner-fx-btn.active{border-color:#5865f2;background:var(--bg-modifier,#35373c)}
+
+body.theme-aurora{--bg-primary:#1a1525;--bg-secondary:#14101c;--bg-tertiary:#0c0a12;--bg-modifier:#2a2238;--brand:#c084fc}
+body.theme-sunset{--bg-primary:#2a1f1a;--bg-secondary:#221914;--bg-tertiary:#16100c;--bg-modifier:#3a2e26;--brand:#f97316}
+body.theme-neon{--bg-primary:#0f1a1a;--bg-secondary:#0a1414;--bg-tertiary:#061010;--bg-modifier:#1a2e2e;--brand:#22d3ee}
+body.theme-rose{--bg-primary:#2a1a22;--bg-secondary:#22141c;--bg-tertiary:#160e14;--bg-modifier:#3a2832;--brand:#fb7185}
+body.theme-ember{--bg-primary:#1f1510;--bg-secondary:#18110c;--bg-tertiary:#100c08;--bg-modifier:#2e2218;--brand:#ef4444}
