@@ -1,6 +1,6 @@
 # DK Chat
 
-Canli site: https://mdcforlegal.github.io/discord-siyah-klon/
+Canli site: https://mdcforlegal.github.io/DK-chat/
 
 ## Ozellikler
 - Giris / Kayit
