@@ -67,46 +67,46 @@
           <div class="status" id="user-status-text" data-i18n="online">Online</div>
         </div>
         <div class="user-controls">
-          <button title="Mute" id="btn-mute" onclick="toggleMute(this)">🎤</button>
-          <button title="Deafen" id="btn-deafen" onclick="toggleDeafen(this)">🎧</button>
-          <button title="Settings" id="btn-settings" onclick="openSettings()">⚙️</button>
+          <button type="button" title="Mute" id="btn-mute" onclick="toggleMute(this)">🎤</button>
+          <button type="button" title="Deafen" id="btn-deafen" onclick="toggleDeafen(this)">🎧</button>
+          <button type="button" title="Settings" id="btn-settings" onclick="openSettings()">⚙️</button>
         </div>
       </div>
     </div>
 
     <div class="chat">
       <div class="chat-header">
-        <button class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">☰</button>
+        <button type="button" class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">☰</button>
         <div class="channel-name"><span class="hash">#</span><span id="current-channel">oda</span></div>
         <div id="room-code-badge">
           <span>Kod:</span>
           <span class="code-text">------</span>
-          <button onclick="copyRoomCode()" title="Kopyala">📋</button>
-          <button onclick="leaveRoomAction()" title="Ayrıl">✕</button>
+          <button type="button" onclick="copyRoomCode()" title="Kopyala">📋</button>
+          <button type="button" onclick="leaveRoomAction()" title="Ayrıl">✕</button>
         </div>
         <div class="header-actions">
-          <button title="Oda" onclick="openRoomModal()">🔗</button>
-          <button title="Plus" onclick="openPlusPurchase()">✨</button>
-          <button title="Settings" onclick="openSettings()">⚙️</button>
-          <button title="Members" onclick="toggleMembers()">👥</button>
+          <button type="button" title="Oda" onclick="openRoomModal()">🔗</button>
+          <button type="button" title="Plus" onclick="openPlusPurchase()">✨</button>
+          <button type="button" title="Settings" onclick="openSettings()">⚙️</button>
+          <button type="button" title="Members" onclick="toggleMembers()">👥</button>
         </div>
       </div>
       <div class="messages" id="messages"></div>
       <div class="message-input-area">
         <div class="input-wrapper">
-          <button class="attach" title="Attach">+</button>
+          <button type="button" class="attach" title="Attach">+</button>
           <input type="text" id="message-input" autocomplete="off" placeholder="Mesaj yaz..." />
-          <button class="emoji" title="Emoji">😊</button>
-          <button class="send" onclick="sendMessage()">➤</button>
+          <button type="button" class="emoji" title="Emoji">😊</button>
+          <button type="button" class="send" onclick="sendMessage()">➤</button>
         </div>
       </div>
     </div>
 
     <div class="mobile-bottom-bar" id="mobile-bottom-bar">
-      <button onclick="toggleChannels()" title="Menü">☰</button>
-      <button onclick="openRoomModal()" title="Oda">🔗</button>
-      <button onclick="openSettings()" title="Ayarlar">⚙️</button>
-      <button onclick="toggleMembers()" title="Üyeler">👥</button>
+      <button type="button" onclick="toggleChannels()" title="Menü">☰</button>
+      <button type="button" onclick="openRoomModal()" title="Oda">🔗</button>
+      <button type="button" onclick="openSettings()" title="Ayarlar">⚙️</button>
+      <button type="button" onclick="toggleMembers()" title="Üyeler">👥</button>
     </div>
 
     <div class="members" id="members-panel">
@@ -124,14 +124,14 @@
 
   <div class="modal" id="room-modal">
     <div class="room-modal-panel">
-      <button class="settings-close" onclick="closeRoomModal()">✕</button>
+      <button type="button" class="settings-close" onclick="closeRoomModal()">✕</button>
       <h2>🔗 Oda</h2>
       <p class="room-desc">Kod ile arkadaşınla gerçek sohbet.</p>
       <div class="room-actions">
-        <button class="auth-btn" onclick="createRoomAction()">Oda Oluştur</button>
+        <button type="button" class="auth-btn" onclick="createRoomAction()">Oda Oluştur</button>
         <div class="room-divider">veya kod ile katıl</div>
         <input type="text" id="join-code-input" maxlength="8" placeholder="KOD" autocomplete="off" />
-        <button class="auth-btn" onclick="joinRoomAction()" style="background:#23a559;">Koda Katıl</button>
+        <button type="button" class="auth-btn" onclick="joinRoomAction()" style="background:#23a559;">Koda Katıl</button>
       </div>
       <p id="room-error"></p>
     </div>
@@ -150,7 +150,7 @@
         </div>
       </div>
       <div class="settings-content">
-        <button class="settings-close" onclick="closeSettings()">✕</button>
+        <button type="button" class="settings-close" onclick="closeSettings()">✕</button>
         <div class="settings-section active" id="section-account">
           <h2 data-i18n="myAccount">My Account</h2>
           <div class="account-card">
@@ -164,7 +164,7 @@
             </div>
             <div class="form-group"><label data-i18n="username">Username</label><input type="text" id="settings-username" maxlength="32" /></div>
             <div class="form-group"><label data-i18n="email">Email</label><input type="email" id="settings-email" /></div>
-            <button class="auth-btn" onclick="saveAccountSettings()" data-i18n="saveChanges">Save Changes</button>
+            <button type="button" class="auth-btn" onclick="saveAccountSettings()" data-i18n="saveChanges">Save Changes</button>
           </div>
         </div>
         <div class="settings-section" id="section-profile">
@@ -188,7 +188,7 @@
               <div class="frame-option frame-fire" data-frame="fire" onclick="selectFrame('fire')" title="Fire">A</div>
             </div>
           </div>
-          <button class="auth-btn" onclick="saveProfileSettings()" data-i18n="saveChanges">Save Changes</button>
+          <button type="button" class="auth-btn" onclick="saveProfileSettings()" data-i18n="saveChanges">Save Changes</button>
         </div>
         <div class="settings-section" id="section-appearance">
           <h2 data-i18n="appearance">Appearance</h2>
@@ -204,14 +204,14 @@
           <div class="plus-card">
             <h3>DK Plus</h3>
             <p id="plus-status-text">Plus yok</p>
-            <button class="auth-btn" onclick="openPlusPurchase()">Plus Satın Al</button>
+            <button type="button" class="auth-btn" onclick="openPlusPurchase()">Plus Satın Al</button>
           </div>
         </div>
         <div class="settings-section" id="section-language">
           <h2 data-i18n="language">Language</h2>
           <div class="lang-options">
-            <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
-            <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 English</button>
+            <button type="button" class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
+            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 English</button>
           </div>
         </div>
       </div>
@@ -223,32 +223,40 @@
       <h2 data-i18n="createServer">Create a Server</h2>
       <div class="form-group"><label data-i18n="serverName">Server Name</label><input type="text" id="new-server-name" maxlength="40" /></div>
       <div class="modal-actions">
-        <button class="cancel" onclick="closeAddServer()" data-i18n="cancel">Cancel</button>
-        <button class="auth-btn" onclick="createServer()" data-i18n="create">Create</button>
+        <button type="button" class="cancel" onclick="closeAddServer()" data-i18n="cancel">Cancel</button>
+        <button type="button" class="auth-btn" onclick="createServer()" data-i18n="create">Create</button>
       </div>
     </div>
   </div>
 
   <div class="modal" id="plus-purchase-modal">
     <div class="plus-purchase-panel">
-      <button class="settings-close" onclick="closePlusPurchase()">✕</button>
+      <button type="button" class="settings-close" onclick="closePlusPurchase()">✕</button>
       <div class="plus-purchase-hero">
         <div class="plus-logo-big">✨</div>
         <h2>DK Plus</h2>
+        <p>Profilini bir üst seviyeye taşı</p>
       </div>
+      <ul class="plus-purchase-list">
+        <li>Hareketli avatar çerçevesi</li>
+        <li>Animasyonlu profil banner</li>
+        <li>İsim efektleri</li>
+        <li>PLUS rozeti</li>
+      </ul>
       <div class="plus-plans">
         <a class="plus-plan monthly" href="https://mdcforlegal.github.io/personal-links/" target="_blank" rel="noopener">
           <div class="plan-label">Aylık</div>
-          <div class="plan-price">Aylık plan</div>
+          <div class="plan-price">$2.50 / ay</div>
           <div class="plan-cta">Satın Al →</div>
         </a>
         <a class="plus-plan yearly" href="https://mdcforlegal.github.io/personal-links/" target="_blank" rel="noopener">
           <div class="plan-badge">Önerilen</div>
           <div class="plan-label">Yıllık</div>
-          <div class="plan-price">Yıllık plan</div>
+          <div class="plan-price">$6.60 / yıl</div>
           <div class="plan-cta">Satın Al →</div>
         </a>
       </div>
+      <p class="plus-purchase-note">Ödeme sayfasına yönlendirileceksin</p>
     </div>
   </div>
 
@@ -257,5 +265,6 @@
   <script src="plus-features.js"></script>
   <script src="room.js"></script>
   <script src="room-fix.js"></script>
+  <script src="mobile-ui-fix.js"></script>
 </body>
 </html>
