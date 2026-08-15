@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="plus-features.css" />
   <link rel="stylesheet" href="frame-fix.css" />
   <link rel="stylesheet" href="room.css" />
+  <link rel="stylesheet" href="no-select.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
 </head>
 <body>
@@ -103,9 +104,9 @@
     </div>
 
     <div class="mobile-bottom-bar" id="mobile-bottom-bar">
-      <button type="button" onclick="toggleChannels()" title="Menü">☰</button>
-      <button type="button" onclick="openRoomModal()" title="Oda">🔗</button>
       <button type="button" onclick="openSettings()" title="Ayarlar">⚙️</button>
+      <button type="button" onclick="openRoomModal()" title="Oda">🔗</button>
+      <button type="button" onclick="toggleChannels()" title="Menü">☰</button>
       <button type="button" onclick="toggleMembers()" title="Üyeler">👥</button>
     </div>
 
@@ -183,7 +184,7 @@
               <div class="frame-option active" data-frame="none" onclick="selectFrame('none')" title="Yok">A</div>
               <div class="frame-option frame-glow" data-frame="glow" onclick="selectFrame('glow')" title="Glow">A</div>
               <div class="frame-option frame-rainbow" data-frame="rainbow" onclick="selectFrame('rainbow')" title="Rainbow">A</div>
-              <div class="frame-option frame-pulse" data-frame="pulse" onclick="selectFrame('pulse')" title="Fire">A</div>
+              <div class="frame-option frame-pulse" data-frame="pulse" onclick="selectFrame('pulse')" title="Pulse">A</div>
               <div class="frame-option frame-gold" data-frame="gold" onclick="selectFrame('gold')" title="Gold">A</div>
               <div class="frame-option frame-fire" data-frame="fire" onclick="selectFrame('fire')" title="Fire">A</div>
             </div>
@@ -262,6 +263,7 @@
 
   <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
   <script src="app.js"></script>
+  <script src="settings-fix.js"></script>
   <script src="plus-features.js"></script>
   <script src="room.js"></script>
   <script src="room-fix.js"></script>
