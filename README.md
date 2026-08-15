@@ -1,4 +1,4 @@
-# DK Chat (Discord Klon)
+# DK Chat
 
 Canli site: https://mdcforlegal.github.io/discord-siyah-klon/
 
