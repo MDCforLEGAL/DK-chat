@@ -1,0 +1,38 @@
+/* Buton ve tıklanabilir öğelerde metin seçimini kapat */
+button,
+.auth-btn,
+.auth-tab,
+.nav-item,
+.server-icon,
+.channel,
+.member,
+.mobile-bottom-bar,
+.mobile-bottom-bar *,
+.header-actions button,
+.user-controls button,
+.mobile-menu-btn,
+.frame-option,
+.theme-card,
+.lang-btn,
+.name-fx-btn,
+.banner-fx-btn,
+.plus-plan,
+.store-item,
+.section-header,
+.settings-close,
+.plus-badge {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+}
+
+/* Input alanlarında seçim açık kalsın */
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
