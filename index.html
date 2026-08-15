@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="frame-fix.css" />
   <link rel="stylesheet" href="room.css" />
   <link rel="stylesheet" href="no-select.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>" />
+  <link rel="stylesheet" href="icons.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235865f2'><path d='M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z'/></svg>" />
 </head>
 <body>
   <div id="auth-screen" class="auth-screen">
@@ -50,7 +51,9 @@
     <div class="channels-overlay" id="channels-overlay" onclick="closeMobileMenus()"></div>
 
     <div class="servers">
-      <div class="server-icon home active" data-server="home" title="Ana Sayfa" onclick="goHome()">🏠</div>
+      <div class="server-icon home active" data-server="home" title="Ana Sayfa" onclick="goHome()">
+        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></span>
+      </div>
     </div>
 
     <div class="channels" id="channels-panel">
@@ -68,46 +71,80 @@
           <div class="status" id="user-status-text" data-i18n="online">Online</div>
         </div>
         <div class="user-controls">
-          <button type="button" title="Mute" id="btn-mute" onclick="toggleMute(this)">🎤</button>
-          <button type="button" title="Deafen" id="btn-deafen" onclick="toggleDeafen(this)">🎧</button>
-          <button type="button" title="Settings" id="btn-settings" onclick="openSettings()">⚙️</button>
+          <button type="button" title="Mute" id="btn-mute" onclick="toggleMute(this)">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.49 6-3.31 6-6.72h-1.7z"/></svg></span>
+          </button>
+          <button type="button" title="Deafen" id="btn-deafen" onclick="toggleDeafen(this)">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c-4.97 0-9 4.03-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7c0-4.97-4.03-9-9-9z"/></svg></span>
+          </button>
+          <button type="button" title="Settings" id="btn-settings" onclick="openSettings()">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.32-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg></span>
+          </button>
         </div>
       </div>
     </div>
 
     <div class="chat">
       <div class="chat-header">
-        <button type="button" class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">☰</button>
+        <button type="button" class="mobile-menu-btn" onclick="toggleChannels()" title="Channels">
+          <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span>
+        </button>
         <div class="channel-name"><span class="hash">#</span><span id="current-channel">oda</span></div>
         <div id="room-code-badge">
           <span>Kod:</span>
           <span class="code-text">------</span>
-          <button type="button" onclick="copyRoomCode()" title="Kopyala">📋</button>
-          <button type="button" onclick="leaveRoomAction()" title="Ayrıl">✕</button>
+          <button type="button" onclick="copyRoomCode()" title="Kopyala">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg></span>
+          </button>
+          <button type="button" onclick="leaveRoomAction()" title="Ayrıl">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
+          </button>
         </div>
         <div class="header-actions">
-          <button type="button" title="Oda" onclick="openRoomModal()">🔗</button>
-          <button type="button" title="Plus" onclick="openPlusPurchase()">✨</button>
-          <button type="button" title="Settings" onclick="openSettings()">⚙️</button>
-          <button type="button" title="Members" onclick="toggleMembers()">👥</button>
+          <button type="button" title="Oda" onclick="openRoomModal()">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></span>
+          </button>
+          <button type="button" title="Plus" onclick="openPlusPurchase()">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+          </button>
+          <button type="button" title="Settings" onclick="openSettings()">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.32-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg></span>
+          </button>
+          <button type="button" title="Members" onclick="toggleMembers()">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
+          </button>
         </div>
       </div>
       <div class="messages" id="messages"></div>
       <div class="message-input-area">
         <div class="input-wrapper">
-          <button type="button" class="attach" title="Attach">+</button>
+          <button type="button" class="attach" title="Attach">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span>
+          </button>
           <input type="text" id="message-input" autocomplete="off" placeholder="Mesaj yaz..." />
-          <button type="button" class="emoji" title="Emoji">😊</button>
-          <button type="button" class="send" onclick="sendMessage()">➤</button>
+          <button type="button" class="emoji" title="Emoji">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg></span>
+          </button>
+          <button type="button" class="send" onclick="sendMessage()">
+            <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></span>
+          </button>
         </div>
       </div>
     </div>
 
     <div class="mobile-bottom-bar" id="mobile-bottom-bar">
-      <button type="button" onclick="openSettings()" title="Ayarlar">⚙️</button>
-      <button type="button" onclick="openRoomModal()" title="Oda">🔗</button>
-      <button type="button" onclick="toggleChannels()" title="Menü">☰</button>
-      <button type="button" onclick="toggleMembers()" title="Üyeler">👥</button>
+      <button type="button" onclick="openSettings()" title="Ayarlar">
+        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.32-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6A3.6 3.6 0 1 1 12 8.4a3.6 3.6 0 0 1 0 7.2z"/></svg></span>
+      </button>
+      <button type="button" onclick="openRoomModal()" title="Oda">
+        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg></span>
+      </button>
+      <button type="button" onclick="toggleChannels()" title="Menü">
+        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg></span>
+      </button>
+      <button type="button" onclick="toggleMembers()" title="Üyeler">
+        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
+      </button>
     </div>
 
     <div class="members" id="members-panel">
@@ -125,8 +162,10 @@
 
   <div class="modal" id="room-modal">
     <div class="room-modal-panel">
-      <button type="button" class="settings-close" onclick="closeRoomModal()">✕</button>
-      <h2>🔗 Oda</h2>
+      <button type="button" class="settings-close" onclick="closeRoomModal()">
+        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
+      </button>
+      <h2>Oda</h2>
       <p class="room-desc">Kod ile arkadaşınla gerçek sohbet.</p>
       <div class="room-actions">
         <button type="button" class="auth-btn" onclick="createRoomAction()">Oda Oluştur</button>
@@ -145,13 +184,15 @@
           <div class="nav-item active" data-section="account" onclick="showSettingsSection('account')"><span data-i18n="myAccount">My Account</span></div>
           <div class="nav-item" data-section="profile" onclick="showSettingsSection('profile')"><span data-i18n="userProfile">User Profile</span></div>
           <div class="nav-item" data-section="appearance" onclick="showSettingsSection('appearance')"><span data-i18n="appearance">Appearance</span></div>
-          <div class="nav-item plus-nav" data-section="plus" onclick="showSettingsSection('plus')">✨ Plus</div>
+          <div class="nav-item plus-nav" data-section="plus" onclick="showSettingsSection('plus')">Plus</div>
           <div class="nav-item" data-section="language" onclick="showSettingsSection('language')"><span data-i18n="language">Language</span></div>
           <div class="nav-item danger" onclick="logout()"><span data-i18n="logOut">Log Out</span></div>
         </div>
       </div>
       <div class="settings-content">
-        <button type="button" class="settings-close" onclick="closeSettings()">✕</button>
+        <button type="button" class="settings-close" onclick="closeSettings()">
+          <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
+        </button>
         <div class="settings-section active" id="section-account">
           <h2 data-i18n="myAccount">My Account</h2>
           <div class="account-card">
@@ -201,7 +242,7 @@
           </div>
         </div>
         <div class="settings-section" id="section-plus">
-          <h2>✨ DK Plus</h2>
+          <h2>DK Plus</h2>
           <div class="plus-card">
             <h3>DK Plus</h3>
             <p id="plus-status-text">Plus yok</p>
@@ -211,8 +252,8 @@
         <div class="settings-section" id="section-language">
           <h2 data-i18n="language">Language</h2>
           <div class="lang-options">
-            <button type="button" class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
-            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">🇬🇧 English</button>
+            <button type="button" class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">Türkçe</button>
+            <button type="button" class="lang-btn" data-lang="en" onclick="setLanguage('en')">English</button>
           </div>
         </div>
       </div>
@@ -232,9 +273,13 @@
 
   <div class="modal" id="plus-purchase-modal">
     <div class="plus-purchase-panel">
-      <button type="button" class="settings-close" onclick="closePlusPurchase()">✕</button>
+      <button type="button" class="settings-close" onclick="closePlusPurchase()">
+        <span class="icon-svg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></span>
+      </button>
       <div class="plus-purchase-hero">
-        <div class="plus-logo-big">✨</div>
+        <div class="plus-logo-big">
+          <span class="icon-svg lg"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg></span>
+        </div>
         <h2>DK Plus</h2>
         <p>Profilini bir üst seviyeye taşı</p>
       </div>

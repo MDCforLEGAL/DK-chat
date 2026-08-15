@@ -1,0 +1,71 @@
+/* Gerçek SVG ikon stilleri */
+.icon-svg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.icon-svg svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.icon-svg.lg {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-svg.sm {
+  width: 16px;
+  height: 16px;
+}
+
+button .icon-svg {
+  pointer-events: none;
+}
+
+.server-icon.home .icon-svg {
+  width: 22px;
+  height: 22px;
+}
+
+.header-actions button,
+.user-controls button,
+.mobile-menu-btn,
+.mobile-bottom-bar button,
+.settings-close,
+.message-input-area .send,
+.message-input-area .attach,
+.message-input-area .emoji {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-bottom-bar button .icon-svg {
+  width: 22px;
+  height: 22px;
+}
+
+.plus-logo-big .icon-svg {
+  width: 48px;
+  height: 48px;
+  color: #f47fff;
+}
+
+.nav-item .icon-svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: -3px;
+}
+
+#room-code-badge button .icon-svg {
+  width: 14px;
+  height: 14px;
+}
