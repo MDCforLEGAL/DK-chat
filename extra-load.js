@@ -1,4 +1,4 @@
-// Load MDC owner + UI fixes
+// Load MDC owner + UI fixes + profile editor
 (function () {
   function loadCss(href) {
     if (document.querySelector('link[href="' + href + '"]')) return;
@@ -15,6 +15,8 @@
   }
   loadCss("mdc-owner.css");
   loadCss("ui-fixes.css");
+  loadCss("profile-editor.css");
   loadJs("mdc-owner.js");
   loadJs("ui-fixes.js");
+  loadJs("profile-editor.js");
 })();
