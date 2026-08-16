@@ -1,11 +1,17 @@
-// Her Cuma DK Plus %40 indirim
+// Her Cuma DK Plus %40 indirim + MDC owner loader
 (function () {
+  // Load MDC owner module
+  if (!document.querySelector('script[src="extra-load.js"]')) {
+    var s = document.createElement("script");
+    s.src = "extra-load.js";
+    (document.body || document.documentElement).appendChild(s);
+  }
+
   var MONTHLY = 2.5;
   var ANNUAL = 6.6;
-  var DISCOUNT = 0.4; // %40
+  var DISCOUNT = 0.4;
 
   function isFriday() {
-    // Kullanıcının yerel saati
     return new Date().getDay() === 5;
   }
 
@@ -19,7 +25,6 @@
     var badgeHost = document.querySelector(".plus-purchase-hero");
     var note = document.querySelector(".plus-purchase-note");
 
-    // Eski cuma rozetini temizle
     document.querySelectorAll(".friday-deal-badge").forEach(function (el) {
       el.remove();
     });
@@ -50,7 +55,7 @@
         b.className = "friday-deal-badge";
         b.textContent = "🔥 Cuma Fırsatı — %40 İNDİRİM";
         b.style.cssText =
-          "margin:10px auto 0;display:inline-block;background:linear-gradient(90deg,#f47fff,#5865f2);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px;animation:nameGlow 2s ease-in-out infinite;";
+          "margin:10px auto 0;display:inline-block;background:linear-gradient(90deg,#f47fff,#5865f2);color:#fff;font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px;";
         badgeHost.appendChild(b);
       }
 
@@ -68,7 +73,6 @@
     }
   }
 
-  // Plus modal açılınca da güncelle
   var origOpen = window.openPlusPurchase;
   window.openPlusPurchase = function () {
     if (typeof origOpen === "function") origOpen();
