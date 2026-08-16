@@ -1,4 +1,4 @@
-// Load MDC owner + UI fixes + profile editor
+// Load extras
 (function () {
   function loadCss(href) {
     if (document.querySelector('link[href="' + href + '"]')) return;
@@ -19,4 +19,5 @@
   loadJs("mdc-owner.js");
   loadJs("ui-fixes.js");
   loadJs("profile-editor.js");
+  loadJs("mobile-layout-fix.js");
 })();
