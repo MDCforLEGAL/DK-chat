@@ -1,0 +1,68 @@
+/* Message Plus badge */
+.msg-plus,
+.header-msg .plus-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: #fff;
+  background: linear-gradient(90deg, #f47fff, #5865f2);
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+/* MDC glow on message authors */
+.message .author.mdc-glow,
+.header-msg .author.mdc-glow {
+  color: #ff2d2d !important;
+  font-weight: 700 !important;
+  text-shadow:
+    0 0 4px #ff1a1a,
+    0 0 10px #ff0000,
+    0 0 18px rgba(255, 0, 0, 0.75) !important;
+  animation: mdcPulse 2.2s ease-in-out infinite;
+}
+
+/* Avatar frames on user panel + messages */
+.avatar-wrap.frame-glow,
+.avatar-msg.frame-glow {
+  box-shadow: 0 0 0 3px #f47fff, 0 0 12px #f47fff;
+  border-radius: 50%;
+  animation: frameGlow 2s ease-in-out infinite;
+}
+.avatar-wrap.frame-rainbow,
+.avatar-msg.frame-rainbow {
+  border-radius: 50%;
+  animation: frameRainbow 3s linear infinite;
+}
+.avatar-wrap.frame-pulse,
+.avatar-msg.frame-pulse {
+  box-shadow: 0 0 0 3px #5865f2;
+  border-radius: 50%;
+  animation: framePulse 1.5s ease-in-out infinite;
+}
+.avatar-wrap.frame-gold,
+.avatar-msg.frame-gold {
+  box-shadow: 0 0 0 3px #f0b232, 0 0 10px rgba(240, 178, 50, 0.5);
+  border-radius: 50%;
+}
+.avatar-wrap.frame-fire,
+.avatar-msg.frame-fire {
+  box-shadow: 0 0 0 3px #ff6b35, 0 0 12px rgba(255, 107, 53, 0.6);
+  border-radius: 50%;
+  animation: frameFire 1.2s ease-in-out infinite;
+}
+
+/* Frame options more clickable on mobile */
+.frame-option {
+  pointer-events: auto !important;
+  z-index: 5 !important;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.frame-option:active {
+  transform: scale(0.92);
+}
