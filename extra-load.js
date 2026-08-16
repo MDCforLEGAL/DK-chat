@@ -1,14 +1,20 @@
-// Load MDC owner styles + script
+// Load MDC owner + UI fixes
 (function () {
-  if (!document.querySelector('link[href="mdc-owner.css"]')) {
+  function loadCss(href) {
+    if (document.querySelector('link[href="' + href + '"]')) return;
     var l = document.createElement("link");
     l.rel = "stylesheet";
-    l.href = "mdc-owner.css";
+    l.href = href;
     document.head.appendChild(l);
   }
-  if (!document.querySelector('script[src="mdc-owner.js"]')) {
+  function loadJs(src) {
+    if (document.querySelector('script[src="' + src + '"]')) return;
     var s = document.createElement("script");
-    s.src = "mdc-owner.js";
-    document.body.appendChild(s);
+    s.src = src;
+    (document.body || document.documentElement).appendChild(s);
   }
+  loadCss("mdc-owner.css");
+  loadCss("ui-fixes.css");
+  loadJs("mdc-owner.js");
+  loadJs("ui-fixes.js");
 })();
