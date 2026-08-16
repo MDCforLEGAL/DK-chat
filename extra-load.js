@@ -20,4 +20,5 @@
   loadJs("ui-fixes.js");
   loadJs("profile-editor.js");
   loadJs("mobile-layout-fix.js");
+  loadJs("i18n-complete.js");
 })();
